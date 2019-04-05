@@ -1,7 +1,7 @@
 var year, month, day;
 now = new Date();
 year = now.getFullYear();
-month = now.getMonth(); // 0-indexなので注意!
+month = now.getMonth(); // 0-indexなので注意
 day = now.getDate();
 
 var calender = makeCalender(year, month);
@@ -119,10 +119,9 @@ function showCalender(calender){
             divLower.className = 'loewr-part';
             pDayNumber.className = 'day-number';
             pDayText.className = 'day-text';
-
+            cell = rows[i].insertCell(-1);
             cell.appendChild(divUpper);
             cell.appendChild(divLower);
-
             cell.appendChild(document.createTextNode(calender[i][j]));
         }
     }

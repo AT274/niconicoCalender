@@ -4,22 +4,26 @@ year = now.getFullYear();
 month = now.getMonth(); // 0-indexなので注意
 day = now.getDate();
 
-var calender = makeCalender(year, month);
-console.log(calender)
-showCalenderHeader();
-showCalender(calender);
+contructCalenderMold();
+exeCalenderProcess();  // 初回起動
 
-$('.btn').click(function(){ 
-    if ($(this).attr('data-command') == 'next'){
-        addMonth();
-    }
-    if ($(this).attr('data-command') == 'prev'){
-        subMonth();
-    }
-    console.log(year, month);
-    var calender = makeCalender(year, month);
+
+function exeCalenderProcess(){
+    var calender = makeCalenderData(year, month);
     showCalenderHeader();
     showCalender(calender);
+}
+
+
+$('#next-btn').click(function(){ 
+    addMonth();
+    exeCalenderProcess();
+});
+
+
+$('#prev-btn').click(function(){ 
+    subMonth();
+    exeCalenderProcess();
 });
 
 
@@ -31,6 +35,7 @@ function addMonth(){
     }
 }
 
+
 function subMonth(){
     month -= 1;
     if (month == -1){
@@ -40,7 +45,8 @@ function subMonth(){
 }
 
 
-function makeCalender(year, month){
+// カレンダーに表示するデータを作ります
+function makeCalenderData(year, month){
     const DAY_OF_WEEK = ["日", "月", "火", "水", "木", "金", "土"];
 
     // year年month月は何日あるか
@@ -72,38 +78,78 @@ function makeCalender(year, month){
 }
 
 
+// カレンダー上部の〇〇年××月を表示します
 function showCalenderHeader(){
     $('#calender-header .text').text(`${year}年${month + 1}月`);
 }
 
 
+// カレンダーの型にデータを差し込みます
 function showCalender(calender){
-    var rows = [];
-    var table = document.createElement('table');
-
-
-    console.log(divUpper);
-    // 表示用カレンダーを構築
-    for(i = 0; i < calender.length; i++){
-        rows.push(table.insertRow(-1));
-        
-        for(j = 0; j < calender[0].length; j++){
-            var divUpper = document.createElement('div');
-            var divLower = document.createElement('div')
-            var pDayNumber = document.createElement('p');
-            var pDayText = document.createElement('p');
-            
-            divUpper.className = 'upper-part';
-            divLower.className = 'loewr-part';
-            pDayNumber.className = 'day-number';
-            pDayText.className = 'day-text';
-            cell = rows[i].insertCell(-1);
-            cell.appendChild(divUpper);
-            cell.appendChild(divLower);
-            cell.appendChild(document.createTextNode(calender[i][j]));
+    for (let i = 0; i < calender.length; i++){
+        for (let j = 0; j < calender.length; j++){
+            if (i == 0) {
+                $('.legend').eq(j).text(calender[i][j]);
+            } else {
+                //  曜日部があるので、日付け部は７番目から始まる(0-indexed)
+                $('.day-number').eq(7 * i + j - 7).text(calender[i][j]);
+            }
         }
     }
-　   
+}
+
+// カレンダーが入る表のhtmlを構築します
+function contructCalenderMold(){
+    var rows = [];
+    var table = document.createElement('table')
+    var rowNum = 7; // 曜日部分に１行
+    var colNum = 7;
+    
+    for(let i = 0; i < rowNum; i++){
+        rows.push(table.insertRow(-1));
+        for(let j = 0; j < colNum; j++){
+            cell = rows[i].insertCell(-1);
+            if (i == 0){
+                cell.appendChild(moldCalenderLegend());
+                
+            } else {
+                cell.appendChild(moldCalenderContent());
+            }
+            cell.appendChild(document.createTextNode(''));  // 何も要素が無いとカレンダーの型が作られないので対策
+        }
+    }
     document.getElementById('calender').removeChild(document.getElementById('calender').childNodes[0]);
     document.getElementById('calender').appendChild(table);
+}
+
+// 曜日部分のelement tree
+function moldCalenderLegend(){
+    var divWrapper = document.createElement('div');
+    var pLegend = document.createElement('p');
+    divWrapper.className = 'content-wrapper';
+    pLegend.className = 'legend';
+    divWrapper.appendChild(pLegend);
+    return divWrapper
+}
+
+// 日付け部分のelement tree
+function moldCalenderContent(){
+    var divWrapper = document.createElement('div');
+    var divUpper = document.createElement('div');
+    var divLower = document.createElement('div')
+    var pDayNumber = document.createElement('p');
+    var pDayText = document.createElement('p');
+
+    divWrapper.className = 'content-wrapper';
+    divUpper.className = 'upper-part';
+    divLower.className = 'loewr-part';
+    pDayNumber.className = 'day-number';
+    pDayText.className = 'day-text';
+
+    divUpper.appendChild(pDayNumber);
+    divUpper.appendChild(pDayText);
+    divWrapper.appendChild(divUpper);
+    divWrapper.appendChild(divLower);
+
+    return divWrapper;
 }

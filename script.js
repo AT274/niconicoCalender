@@ -4,14 +4,16 @@ year = now.getFullYear();
 month = now.getMonth(); // 0-indexなので注意
 day = now.getDate();
 
+
 contructCalenderMold();
 exeCalenderProcess();  // 初回起動
 
 
 function exeCalenderProcess(){
-    var calender = makeCalenderData(year, month);
+    var calender = makeCalenderBaseData(year, month);
     showCalenderHeader();
     showCalender(calender);
+    grantCalenderColor();
 }
 
 
@@ -46,9 +48,7 @@ function subMonth(){
 
 
 // カレンダーに表示するデータを作ります
-function makeCalenderData(year, month){
-    const DAY_OF_WEEK = ["日", "月", "火", "水", "木", "金", "土"];
-
+function makeCalenderBaseData(year, month){
     // year年month月は何日あるか
     numOfDay = new Date(year, month + 1, 0).getDate();
     
@@ -98,24 +98,37 @@ function showCalender(calender){
     }
 }
 
+
+// カレンダーの土曜日・日曜日に対して各色に対応した属性を付与します
+function grantCalenderColor(year, month){
+    for (let i = 0; i < 42; i++){
+        // 日曜日は0, 7, 14...番目、土曜日は6, 13, 20...番目 
+        if (i % 7 == 0){
+            $('.content-wrapper').eq(i).attr('data-type', 'sunday');
+        }
+        if (i % 7 == 6) {
+            $('.content-wrapper').eq(i).attr('data-type', 'suturday');
+        }
+    }
+}
+
+
 // カレンダーが入る表のhtmlを構築します
 function contructCalenderMold(){
     var rows = [];
     var table = document.createElement('table')
-    var rowNum = 7; // 曜日部分に１行
-    var colNum = 7;
+    var calenderRowNum = 7; // 曜日部分に１行
+    var calenderColNum = 7;
     
-    for(let i = 0; i < rowNum; i++){
+    for(let i = 0; i < calenderRowNum; i++){
         rows.push(table.insertRow(-1));
-        for(let j = 0; j < colNum; j++){
+        for(let j = 0; j < calenderColNum; j++){
             cell = rows[i].insertCell(-1);
             if (i == 0){
                 cell.appendChild(moldCalenderLegend());
-                
             } else {
                 cell.appendChild(moldCalenderContent());
             }
-            cell.appendChild(document.createTextNode(''));  // 何も要素が無いとカレンダーの型が作られないので対策
         }
     }
     document.getElementById('calender').removeChild(document.getElementById('calender').childNodes[0]);
@@ -126,7 +139,7 @@ function contructCalenderMold(){
 function moldCalenderLegend(){
     var divWrapper = document.createElement('div');
     var pLegend = document.createElement('p');
-    divWrapper.className = 'content-wrapper';
+    divWrapper.className = 'legend-wrapper';
     pLegend.className = 'legend';
     divWrapper.appendChild(pLegend);
     return divWrapper

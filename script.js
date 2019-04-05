@@ -99,15 +99,16 @@ function showCalender(calender){
 }
 
 
-// カレンダーの土曜日・日曜日に対して各色に対応した属性を付与します
+// カレンダーの土曜日・日曜日に対して各色に対応したクラスを付与します
 function grantCalenderColor(year, month){
-    for (let i = 0; i < 42; i++){
+    for (let i = 0; i < 49; i++){
         // 日曜日は0, 7, 14...番目、土曜日は6, 13, 20...番目 
         if (i % 7 == 0){
-            $('.content-wrapper').eq(i).attr('data-type', 'sunday');
-        }
-        if (i % 7 == 6) {
-            $('.content-wrapper').eq(i).attr('data-type', 'suturday');
+            $('td').eq(i).addClass('sunday');
+        } else if (i % 7 == 6) {
+            $('td').eq(i).addClass('saturday');
+        } else {
+            $('td').eq(i).addClass('weekday');
         }
     }
 }

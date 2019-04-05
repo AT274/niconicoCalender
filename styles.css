@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+  }
+  
+body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+}
+
+.title {
+    margin: 0;
+    text-align: center;
+    color: red;
+}
+
+.sunday {
+    color: red; 
+    background-color: rgba(255, 40, 40, 0.15);
+}
+
+.saturday {
+    color: blue;
+    background-color: rgba(40, 40, 255, 0.15);
+}
+
+.weekday {
+    color: black;
+    background-color: rgba(30, 15, 0, 0.15);
+}

@@ -41,7 +41,6 @@ function subMonth(){
 
 
 function makeCalender(year, month){
-    const MONTH_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     const DAY_OF_WEEK = ["日", "月", "火", "水", "木", "金", "土"];
 
     // year年month月は何日あるか
@@ -70,8 +69,6 @@ function makeCalender(year, month){
     // 先頭行に曜日を追加
     calender.unshift(['日', '月', '火', '水', '木', '金', '土'])
     return calender;
-
-
 }
 
 

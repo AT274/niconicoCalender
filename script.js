@@ -45,10 +45,7 @@ function makeCalender(year, month){
     const DAY_OF_WEEK = ["日", "月", "火", "水", "木", "金", "土"];
 
     // year年month月は何日あるか
-    numOfDay = MONTH_DAYS[month];
-    if ((month == 1) && checkLeap(year)){
-        numOfDay += 1;
-    }
+    numOfDay = new Date(year, month + 1, 0).getDate();
     
     // year年month月は何曜日から始まるか
     choicedYearMonth = new Date(year, month, 1, 9, 0);  // 9時間の時差を調整
@@ -72,32 +69,16 @@ function makeCalender(year, month){
 
     // 先頭行に曜日を追加
     calender.unshift(['日', '月', '火', '水', '木', '金', '土'])
-
-
     return calender;
 
 
 }
 
 
-function checkLeap(year){
-    // 閏年判定
-    if (year % 4 == 0){
-        if (year % 100 == 0){
-            if (year % 400 == 0){
-                return true;
-            }
-        } else {
-            return true;
-        }
-    }
-    return false
-}
-
-
 function showCalenderHeader(){
     $('#calender-header .text').text(`${year}年${month + 1}月`);
 }
+
 
 function showCalender(calender){
     var rows = [];

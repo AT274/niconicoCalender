@@ -20,7 +20,7 @@ body {
     display: inline-block;
 }
 
-td {
+.date {
     vertical-align: top;
     width: 100px;
     height: 60px;
@@ -30,11 +30,20 @@ td {
     height: 30px;
 }
 
+.content-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
 .upper-part {
     height: 25px;
     vertical-align: top;
     text-align: left;
     
+}
+
+.lower-part {
+    height: 40px;
 }
 
 .day-number {
@@ -57,3 +66,47 @@ td {
     background-color: rgba(230, 226, 230, 0.4);
 }
 
+#modal {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    top: 100px;
+    display: inline-block;
+    margin: 1.5em 0;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+    border-radius: 7px;
+}
+
+#modal:before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-bottom: 15px solid #e0edff;
+  }
+  
+#modal p {
+margin: 0;
+padding: 0;
+}
+
+img {
+    height: 35px;
+    width: 35px;
+    margin: 10px 3px 0px;
+}
+
+.lower-part {
+    vertical-align: center;
+}
+.lower-part img {
+    margin: 0;
+    vertical-align: center;
+}

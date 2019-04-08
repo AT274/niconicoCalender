@@ -85,7 +85,7 @@ function makeCalenderBaseData(year, month){
 
 // カレンダー上部の〇〇年××月を表示します
 function showCalenderHeader(){
-    $('#calender-header .text').text(`${year}年${month + 1}月`);
+    $('#calender-header #text').text(`${year}年${month + 1}月`);
 }
 
 
@@ -213,7 +213,7 @@ $(document).on('click', '.date', function(){
         }
 
         // クリックされた日付けセルの下にモーダルを表示
-        $('#modal').fadeIn(1000);
+        $('#modal').fadeIn(100);
         var position = cell.getBoundingClientRect();;
         var modalY = position.top + 50;
         var modalX = position.left - 20;

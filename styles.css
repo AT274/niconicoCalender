@@ -10,10 +10,14 @@ body {
 
 .btn {
     display: inline-block;
+    vertical-align: bottom;
 }
 
-.text {
+#text {
     display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 5px 0;
 }
 
 #calender {

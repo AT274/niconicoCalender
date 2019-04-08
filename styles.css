@@ -3,14 +3,43 @@
   }
   
 body {
+    text-align:center;
     margin: 0;
     font-family: "Hiragino Kaku Gothic ProN", sans-serif;
 }
 
-.title {
-    margin: 0;
-    text-align: center;
-    color: red;
+.btn {
+    display: inline-block;
+}
+
+.text {
+    display: inline-block;
+}
+
+#calender {
+    display: inline-block;
+}
+
+td {
+    vertical-align: top;
+    width: 100px;
+    height: 60px;
+}
+
+.legend {
+    height: 30px;
+}
+
+.upper-part {
+    height: 25px;
+    vertical-align: top;
+    text-align: left;
+    
+}
+
+.day-number {
+    margin-left: 2px;
+    display: inline;
 }
 
 .sunday {
@@ -25,5 +54,6 @@ body {
 
 .weekday {
     color: black;
-    background-color: rgba(30, 15, 0, 0.15);
+    background-color: rgba(230, 226, 230, 0.4);
 }
+

@@ -126,6 +126,7 @@ function contructCalenderMold(){
         for(let j = 0; j < calenderColNum; j++){
             cell = rows[i].insertCell(-1);
             if (i == 0){
+                cell.className = 'legend';
                 cell.appendChild(moldCalenderLegend());
             } else {
                 cell.appendChild(moldCalenderContent());

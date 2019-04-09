@@ -1,5 +1,5 @@
-import * as CalenderMold from '/calender_mold.js';
-import * as Calender from '/calender.js'
+import * as CalenderMold from './calender_mold.js';
+import * as Calender from './calender.js'
 
 var now = new Date();
 var year = now.getFullYear();

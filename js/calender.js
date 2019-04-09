@@ -1,4 +1,4 @@
-import * as Holiday from '/holiday.js';
+import * as Holiday from './holiday.js';
 
 // カレンダー上部の〇〇年××月を表示します
 export function showCalenderHeader(year, month){

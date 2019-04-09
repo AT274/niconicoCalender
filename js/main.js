@@ -8,6 +8,7 @@ var month = now.getMonth(); // 0-indexなので注意
 exeCalenderProcess();  // 初回起動
 
 
+// カレンダーを再構築します
 function exeCalenderProcess(){
     CalenderMold.contructCalenderMold();
     Calender.showCalenderHeader(year, month)
@@ -15,6 +16,7 @@ function exeCalenderProcess(){
 }
 
 
+// 翌月のカレンダーに進むボタン
 $('#next-btn').click(function(){ 
     addMonth();
     exeCalenderProcess();
@@ -22,6 +24,7 @@ $('#next-btn').click(function(){
 });
 
 
+// 前月のカレンダーに戻るボタン
 $('#prev-btn').click(function(){ 
     subMonth();
     exeCalenderProcess();
@@ -29,6 +32,7 @@ $('#prev-btn').click(function(){
 });
 
 
+// 翌月に進む
 function addMonth(){
     month += 1;
     if (month == 12){
@@ -38,6 +42,7 @@ function addMonth(){
 }
 
 
+// 前月に戻る
 function subMonth(){
     month -= 1;
     if (month == -1){

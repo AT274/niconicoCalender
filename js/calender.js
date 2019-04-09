@@ -12,6 +12,7 @@ export function showCalender(year, month){
     var calenderBaseData = makeCalenderBaseData(year, month);
     for (let i = 0; i < calenderBaseData.length; i++){
         for (let j = 0; j < calenderBaseData.length; j++){
+            // 一行目は曜日部
             if (i == 0) {
                 $('.legend').eq(j).text(calenderBaseData[i][j]);
             } else {
@@ -84,7 +85,7 @@ export function applyHoliday(year, month){
     
     for (let holiday of holidayData){
         if (holiday['month'] - 1 == month){
-            $('td').eq(parseInt(holiday['date']) + startDayOfWeeK  +7 - 1).addClass('holiday');
+            $('td').eq(parseInt(holiday['date']) + startDayOfWeeK  + 7 - 1).addClass('holiday');
             $('.day-text').eq(parseInt(holiday['date']) + startDayOfWeeK - 1).text(holiday['name']);
         }
     }

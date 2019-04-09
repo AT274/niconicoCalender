@@ -1,6 +1,6 @@
-// モーダルの型
 export var modal = moldModal();
 
+// モーダルの型を作成
 export function moldModal(){
     var modal = document.createElement('div');
     var imgSmile = document.createElement('img');

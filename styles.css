@@ -8,6 +8,30 @@ body {
     font-family: "Hiragino Kaku Gothic ProN", sans-serif;
 }
 
+#title {
+    position: relative;
+    color: #158b2b;
+    font-size: 20px;
+    padding: 10px 0;
+    text-align: center;
+    margin: 1.5em 0;
+}
+
+#title:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 150px;
+    height: 58px;
+    border-radius: 50%;
+    border: 5px solid #a6ddb0;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+  
 .btn {
     display: inline-block;
     vertical-align: bottom;
@@ -27,11 +51,11 @@ body {
 .date {
     vertical-align: top;
     width: 100px;
-    height: 60px;
+    height: 70px;
 }
 
 .legend {
-    height: 30px;
+    height: 30px; 
 }
 
 .content-wrapper {
@@ -48,18 +72,21 @@ body {
 
 .lower-part {
     height: 40px;
+    text-align: center;
 }
 
 .day-number {
-    margin-left: 2px;
-    display: inline;
+    height: 100%;
+    float: left;
+    margin: 0 0 0 2px;
 }
 
 .day-text {
     float: right;
-    font-size: 2px;
-    margin-top: 3px;
+    font-size: 1px;
+    margin: 3px 0 0 0;
 }
+
 .weekday {
     color: black;
     background-color: rgba(230, 226, 230, 0.4);
@@ -112,11 +139,8 @@ img {
     margin: 10px 3px 0px;
 }
 
-.lower-part {
-    vertical-align: center;
-}
-
 .lower-part img {
     margin: 0;
     vertical-align: center;
+    text-align: center;
 }

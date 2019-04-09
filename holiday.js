@@ -134,7 +134,7 @@ export function getHoliday(year) {
             'endY': 9999
         },
         {
-            'name': '即位礼正殿の儀の日',
+            'name': '即位礼正殿の儀',
             'date': '10/22',
             'startY': 2019,
             'endY': 2019,

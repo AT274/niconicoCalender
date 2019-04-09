@@ -22,13 +22,31 @@ document.onkeydown = keydown;
 function keydown() {
     // 右（進む）
     if (event.keyCode == 39){
+        $('#next-btn img').css('height', '100%');
+        $('#next-btn img').css('width', '100%');
         addMonth();
         exeCalenderProcess();
     }
     // 左（戻る）
     if (event.keyCode == 37){
+        $('#prev-btn img').css('height', '100%');
+        $('#prev-btn img').css('width', '100%');
         subMonth();
         exeCalenderProcess();
+    }
+}
+
+document.onkeyup = keyup;
+function keyup() {
+    // 右（進む）
+    if (event.keyCode == 39){
+        $('#next-btn img').css('height', '90%');
+        $('#next-btn img').css('width', '90%');
+    }
+    // 左（戻る）
+    if (event.keyCode == 37){
+        $('#prev-btn img').css('height', '90%');
+        $('#prev-btn img').css('width', '90%');
     }
 }
 

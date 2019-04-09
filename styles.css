@@ -44,12 +44,31 @@ body {
     border-bottom: solid 3px rgb(119, 195, 223);
 }
 
+#calender-header {
+    height: 35px;
+    margin-bottom: 10px;
+}
+
 .btn {
+    height: 100%;
+    width: 35px;
     display: inline-block;
     vertical-align: bottom;
 }
 
+.btn img {
+    padding-top: 3px;
+    height: 90%;
+    width: 90%;
+}
+
+.btn:active img{
+    height: 100%;
+    width: 100%;
+}
+
 #text {
+    height: 100%;
     display: inline-block;
     font-size: 30px;
     font-weight: lighter;
@@ -145,13 +164,15 @@ margin: 0;
 padding: 0;
 }
 
-img {
+#modal img {
     height: 35px;
     width: 35px;
     margin: 10px 3px 0px;
 }
 
 .lower-part img {
+    height: 35px;
+    width: 35px;
     margin: 0;
     vertical-align: center;
     text-align: center;

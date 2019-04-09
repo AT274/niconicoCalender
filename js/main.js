@@ -10,9 +10,26 @@ exeCalenderProcess();  // 初回起動
 
 // カレンダーを再構築します
 function exeCalenderProcess(){
+    $('#modal').hide();
     CalenderMold.contructCalenderMold();
     Calender.showCalenderHeader(year, month)
     Calender.showCalender(year, month);
+}
+
+
+// 方向キーでのカレンダーめくり
+document.onkeydown = keydown;
+function keydown() {
+    // 右（進む）
+    if (event.keyCode == 39){
+        addMonth();
+        exeCalenderProcess();
+    }
+    // 左（戻る）
+    if (event.keyCode == 37){
+        subMonth();
+        exeCalenderProcess();
+    }
 }
 
 
@@ -20,7 +37,7 @@ function exeCalenderProcess(){
 $('#next-btn').click(function(){ 
     addMonth();
     exeCalenderProcess();
-    $('#modal').hide();
+    
 });
 
 
@@ -28,7 +45,6 @@ $('#next-btn').click(function(){
 $('#prev-btn').click(function(){ 
     subMonth();
     exeCalenderProcess();
-    $('#modal').hide();
 });
 
 

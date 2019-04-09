@@ -1,15 +1,13 @@
-var year, month, day;
+import * as Holiday from '/holiday.js';
 var now = new Date();
 var year = now.getFullYear();
 var month = now.getMonth(); // 0-indexなので注意
-varday = now.getDate();
 var modal = moldModal();
-
 
 
 contructCalenderMold();
 exeCalenderProcess();  // 初回起動
-
+applyHoliday(year, month);
 
 function exeCalenderProcess(){
     contructCalenderMold();
@@ -17,6 +15,7 @@ function exeCalenderProcess(){
     showCalenderHeader();
     showCalender(calender);
     grantCalenderColor();
+    applyHoliday(year, month);
 }
 
 
@@ -55,10 +54,10 @@ function subMonth(){
 // カレンダーに表示するデータを作ります
 function makeCalenderBaseData(year, month){
     // year年month月は何日あるか
-    numOfDay = new Date(year, month + 1, 0).getDate();
+    var numOfDay = new Date(year, month + 1, 0).getDate();
     
     // year年month月は何曜日から始まるか
-    choicedYearMonth = new Date(year, month, 1, 9, 0);  // 9時間の時差を調整
+    var choicedYearMonth = new Date(year, month, 1, 9, 0);  // 9時間の時差を調整
     var startDayOfWeeK = choicedYearMonth.getDay();
 
     // カレンダーを一次元配列で表現
@@ -129,7 +128,7 @@ function contructCalenderMold(){
     for(let i = 0; i < calenderRowNum; i++){
         rows.push(table.insertRow(-1));
         for(let j = 0; j < calenderColNum; j++){
-            cell = rows[i].insertCell(-1);
+            var cell = rows[i].insertCell(-1);
             if (i == 0){
                 cell.className = 'legend';
                 cell.appendChild(moldCalenderLegend());
@@ -229,3 +228,21 @@ $(document).on('click', 'img', function(event){
     $('#modal').hide();
     event.stopPropagation(); // 再表示をブロック
 });
+
+// 祝日のデータを取得して、カレンダーの
+function applyHoliday(year, month){
+    var holidayData = Holiday.getHoliday(year);
+    // year年month月は何曜日から始まるか
+    var choicedYearMonth = new Date(year, month, 1, 9, 0);  // 9時間の時差を調整
+    var startDayOfWeeK = choicedYearMonth.getDay();
+    
+    console.log(startDayOfWeeK);
+    for (let holiday of holidayData){
+        if (holiday['month'] - 1 == month){
+            $('td').eq(parseInt(holiday['date']) + startDayOfWeeK  +7 - 1).addClass('holiday');
+            $('.day-text').eq(parseInt(holiday['date']) + startDayOfWeeK - 1).text(holiday['name']);
+        }
+    }
+
+}
+

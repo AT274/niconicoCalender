@@ -5,33 +5,45 @@
 body {
     text-align:center;
     margin: 0;
-    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
+     "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
 #title {
-    position: relative;
-    color: #158b2b;
-    font-size: 20px;
-    padding: 10px 0;
-    text-align: center;
-    margin: 1.5em 0;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+#title h1{
+    display: inline;
+    font-weight: lighter;
 }
 
-#title:before {
-    content: "";
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    width: 150px;
-    height: 58px;
-    border-radius: 50%;
-    border: 5px solid #a6ddb0;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
+#title h1 {
+    position: relative;
+    padding-left: 25px;
+  }
   
+#title h1:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+}
+
+#title h1:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px rgb(119, 195, 223);
+}
+
 .btn {
     display: inline-block;
     vertical-align: bottom;

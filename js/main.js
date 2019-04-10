@@ -40,13 +40,13 @@ document.onkeyup = keyup;
 function keyup() {
     // 右（進む）
     if (event.keyCode == 39){
-        $('#next-btn img').css('height', '90%');
-        $('#next-btn img').css('width', '90%');
+        $('#next-btn img').css('height', '');  // 再び外部CSSを参照する
+        $('#next-btn img').css('width', '');
     }
     // 左（戻る）
     if (event.keyCode == 37){
-        $('#prev-btn img').css('height', '90%');
-        $('#prev-btn img').css('width', '90%');
+        $('#prev-btn img').css('height', '');
+        $('#prev-btn img').css('width', '');
     }
 }
 

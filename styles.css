@@ -62,10 +62,17 @@ body {
     width: 90%;
 }
 
-.btn:active img{
+.active {
     height: 100%;
     width: 100%;
 }
+
+.btn img:active {
+    height: 100%;
+    width: 100%;
+}
+
+
 
 #text {
     height: 100%;

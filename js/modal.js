@@ -1,7 +1,7 @@
-export var modal = moldModal();
+var modal = moldModal();
 
 // モーダルの型を作成
-export function moldModal(){
+function moldModal(){
     var modal = document.createElement('div');
     var imgSmile = document.createElement('img');
     var imgNormal = document.createElement('img');
@@ -34,7 +34,7 @@ $(document).on('click', '.date', function(){
         }
         
         // クリックされた日付けセルの下にモーダルを表示
-        $('#modal').fadeIn(100);
+        $('#modal').fadeIn(150);
         var position = cell.getBoundingClientRect();;
         var modalY = position.top + 50;
         var modalX = position.left - 20;

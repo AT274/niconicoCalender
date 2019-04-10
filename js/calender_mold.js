@@ -48,8 +48,9 @@ export function moldCalenderContent(){
     divWrapper.className = 'content-wrapper';
     divUpper.className = 'upper-part';
     divLower.className = 'lower-part';
-    img.src = "";
+    img.src = "img/transparent.png";
     img.alt = "";
+
     pDayNumber.className = 'day-number';
     pDayText.className = 'day-text';
 

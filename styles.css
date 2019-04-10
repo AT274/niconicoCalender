@@ -73,7 +73,6 @@ body {
 }
 
 
-
 #text {
     height: 100%;
     display: inline-block;
@@ -119,10 +118,22 @@ body {
     margin: 0 0 0 2px;
 }
 
-.day-text {
-    float: right;
-    font-size: 1px;
-    margin: 3px 0 0 0;
+/* Chrome用 */
+@media screen and (-webkit-min-device-pixel-ratio:0){
+    .day-text {
+        float: right;
+        font-size: 1px;
+        margin: 3px 0 0 0;
+    }
+}
+
+/* Firefox用 */
+@-moz-document url-prefix(){
+    .day-text {
+        float: right;
+        font-size: 10px;
+        margin: 3px 0 0 0;
+    }
 }
 
 .weekday {
@@ -183,4 +194,8 @@ padding: 0;
     margin: 0;
     vertical-align: center;
     text-align: center;
+}
+
+img[src='img/transparent.png']{
+    opacity: 0;
 }

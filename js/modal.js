@@ -24,7 +24,7 @@ $(document).on('click', '.date', function(){
         // 先に準備しておかないと、１回目の表示スピードがずれます
         var cell = this;
         cell.appendChild(modal);
-
+        
         // 一度隠す
         $('#modal').hide();
         
@@ -32,7 +32,7 @@ $(document).on('click', '.date', function(){
         if ($(this).find('.day-number')[0].innerText == ''){
             return
         }
-
+        
         // クリックされた日付けセルの下にモーダルを表示
         $('#modal').fadeIn(100);
         var position = cell.getBoundingClientRect();;
@@ -44,7 +44,7 @@ $(document).on('click', '.date', function(){
 );
 
 // ニコニコマークの表示
-$(document).on('click', 'img', function(event){
+$(document).on('click', '#modal img', function(event){
 　  var src = $(this).attr('src')
     $('td:has(#modal)').find('img').eq(0).attr('src', src);
     $('#modal').hide();
